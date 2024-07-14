@@ -1,4 +1,3 @@
-// Function to extract tweet data
 function extractTweetData(tweet) {
   const usernameElement = tweet.querySelector('div[data-testid="User-Name"] span');
   const username = usernameElement ? usernameElement.textContent : 'Unknown';
@@ -21,14 +20,12 @@ function extractTweetData(tweet) {
   return { username, tweetContent, media, tweetLink };
 }
 
-// Function to scroll and extract tweets incrementally
-async function scrollAndExtract(maxScrolls = 30) {
+async function scrollAndExtract(maxScrolls = 100) {
   let scrollCount = 0;
-  let lastHeight = 0;
+  let lastHeight = document.documentElement.scrollHeight;
   const uniqueTweets = new Map();
 
   while (scrollCount < maxScrolls) {
-    // Extract current tweets
     const tweets = document.querySelectorAll('article[data-testid="tweet"]');
     console.log(`Found ${tweets.length} tweets on the page`);
 
@@ -41,17 +38,16 @@ async function scrollAndExtract(maxScrolls = 30) {
 
     console.log(`Total unique tweets collected: ${uniqueTweets.size}`);
 
-    // Scroll
-    window.scrollTo(0, document.body.scrollHeight);
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    window.scrollBy(0, 5000);
+    await new Promise(resolve => setTimeout(resolve, 3000));
 
-    const newHeight = document.body.scrollHeight;
-    if (newHeight === lastHeight) {
-      console.log("Reached the end of the page or no more tweets loading");
+    const currentHeight = document.documentElement.scrollHeight;
+    if (currentHeight === lastHeight) {
+      console.log("Height hasn't changed. Ending scroll.");
       break;
     }
+    lastHeight = currentHeight;
 
-    lastHeight = newHeight;
     scrollCount++;
     console.log(`Scroll ${scrollCount} completed`);
   }
@@ -59,7 +55,6 @@ async function scrollAndExtract(maxScrolls = 30) {
   return Array.from(uniqueTweets.values());
 }
 
-// Main function to scroll, extract data, and save to JSON
 async function scrollExtractAndSave() {
   console.log("Starting to scroll and extract tweets");
   const tweets = await scrollAndExtract();
@@ -80,5 +75,4 @@ async function scrollExtractAndSave() {
   console.log(`Extracted and saved ${tweets.length} unique tweets.`);
 }
 
-// Run the main function
 scrollExtractAndSave();
