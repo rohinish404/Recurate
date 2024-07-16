@@ -1,3 +1,34 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+#all_tweets {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+#tweet {
+  background-color: #f8f9fa;
+  border: 1px solid #e1e8ed;
+  border-radius: 12px;
+  padding: 15px;
+  overlow: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#tweet p:first-child {
+  font-weight: bold;
+  color: #14171a;
+  margin-bottom: 5px;
+}
+
+#tweet p:nth-child(2) {
+  color: #657786;
+  margin-bottom: 10px;
+}
+
+#tweet img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+
