@@ -1,7 +1,8 @@
-//import tweet_data from "../data/tweet_data.json"
 const all_tweets = document.getElementById("all_tweets")
+const all_tweets2 = document.getElementById("all_tweets2")
 const input_query = document.getElementById("myInput")
-
+const input_query2 = document.getElementById("myInput2")
+const search_btn = document.getElementById("search_btn")
 async function loadTweets(){
   try {
     const response = await fetch('../data/tweet_data.json');
@@ -15,7 +16,7 @@ async function loadTweets(){
 <p>${twt?.tweetContent}</p>
 <img src="${twt?.media[0]}"></img> 
 `;
-      
+
       if (twt?.tweetContent.toUpperCase().indexOf(input_query.value?.toUpperCase()) > -1||twt?.username.toUpperCase().indexOf(input_query.value?.toUpperCase()) > -1) {
         console.log("hi")
         tweetElement.style.display = "";
@@ -32,6 +33,36 @@ async function loadTweets(){
   }
 }
 
+function semanticSearch() {
+  all_tweets2.innerHTML = '';
+
+  fetch('http://localhost:8000/ask',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query: input_query2.value }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(item => {
+        const tweetElement = document.createElement('div');
+        tweetElement.id = "tweet2"
+        tweetElement.innerHTML = `
+<p>${item?.username}</p>
+<p>${item?.tweetContent}</p>
+
+`;
+        all_tweets2.appendChild(tweetElement);
+      });
+    })
+    .catch(error => console.error('Error:', error));
+
+
+
+}
+
 window.addEventListener('load', loadTweets);
 input_query.addEventListener('input', loadTweets);
+search_btn.addEventListener('click', semanticSearch);
 
