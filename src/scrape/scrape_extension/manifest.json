@@ -1,0 +1,10 @@
+
+{
+  "manifest_version": 3,
+  "version": "0.1",
+  "name": "scrapeTweets",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
