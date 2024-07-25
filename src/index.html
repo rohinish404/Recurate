@@ -9,9 +9,19 @@
   </head>
   <body>
     <div>
-      <h1>Recurate</h1>
-      <input type="text" id="myInput" onkeyup="loadTweets()" placeholder="Search for tweets...">
-      <a href="semant.html"><h2>Semantic Search</h2><a>
+      <div id="nav">
+        <h1>Recurate</h1>
+        <div id="nav_search">
+          <input type="text" id="myInput" onkeyup="loadTweets()" placeholder="Search for tweets...">
+          <div class="toggle">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+            <p>Semantic Search</p>
+          </div>
+        </div>
+      </div>
       <div id="all_tweets">
 
 
@@ -21,3 +31,5 @@
     <script src="./index.js"></script>
   </body>
 </html>
+
+

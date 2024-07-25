@@ -3,4 +3,5 @@ lancedb
 sentence-transformers
 pandas
 tantivy
-
+groq
+python-dotenv

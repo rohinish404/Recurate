@@ -24,6 +24,6 @@ async def root():
     return {"message": "Hello World"}
 @app.post("/ask")
 async def get_results(request: Ask):
-    actual = table.search(request.query).limit(10).to_pydantic(EmbeddingModel)
+    actual = table.search(request.query, query_type="hybrid").limit(10).to_pydantic(EmbeddingModel)
     return actual
 

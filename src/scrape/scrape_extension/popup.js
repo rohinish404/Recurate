@@ -65,7 +65,6 @@ async function injectScrollAndSave() {
 
       scrollCount++;
       console.log(`Scroll ${scrollCount} completed`);
-      if (scrollCount==5){break;}
     }
 
     return Array.from(uniqueTweets.values());

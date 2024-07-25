@@ -5,7 +5,7 @@ const input_query2 = document.getElementById("myInput2")
 const search_btn = document.getElementById("search_btn")
 async function loadTweets(){
   try {
-    const response = await fetch('../data/tweet_data.json');
+    const response = await fetch('../data/bookmarks.json');
     const tweet_data = await response.json();
     all_tweets.innerHTML = '';
     tweet_data.forEach((twt)=>{
