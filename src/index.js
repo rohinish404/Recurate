@@ -1,8 +1,8 @@
 const all_tweets = document.getElementById("all_tweets")
-const all_tweets2 = document.getElementById("all_tweets2")
 const input_query = document.getElementById("myInput")
-const input_query2 = document.getElementById("myInput2")
 const search_btn = document.getElementById("search_btn")
+const toggleCheck = document.getElementById("toggleCheck")
+
 async function loadTweets(){
   try {
     const response = await fetch('../data/bookmarks.json');
@@ -17,8 +17,7 @@ async function loadTweets(){
 <img src="${twt?.media[0]}"></img> 
 `;
 
-      if (twt?.tweetContent.toUpperCase().indexOf(input_query.value?.toUpperCase()) > -1||twt?.username.toUpperCase().indexOf(input_query.value?.toUpperCase()) > -1) {
-        console.log("hi")
+      if (twt?.tweetContent.toUpperCase().includes(input_query.value?.toUpperCase()) ||twt?.username.toUpperCase().includes(input_query.value?.toUpperCase())) {
         tweetElement.style.display = "";
       } else {
         tweetElement.style.display = "none";
@@ -34,35 +33,40 @@ async function loadTweets(){
 }
 
 function semanticSearch() {
-  all_tweets2.innerHTML = '';
-
+  all_tweets.innerHTML = '';
   fetch('http://localhost:8000/ask',{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ query: input_query2.value }),
+    body: JSON.stringify({ query: input_query.value }),
   })
     .then(response => response.json())
     .then(data => {
       data.forEach(item => {
         const tweetElement = document.createElement('div');
-        tweetElement.id = "tweet2"
+        tweetElement.id = "tweet"
         tweetElement.innerHTML = `
 <p>${item?.username}</p>
 <p>${item?.tweetContent}</p>
 
 `;
-        all_tweets2.appendChild(tweetElement);
+        all_tweets.appendChild(tweetElement);
       });
     })
     .catch(error => console.error('Error:', error));
-
-
-
 }
 
-window.addEventListener('load', loadTweets);
-input_query.addEventListener('input', loadTweets);
-search_btn.addEventListener('click', semanticSearch);
-
+function handleSearch() {
+  if (toggleCheck.checked) {
+    console.log("Calling semanticSearch");
+    semanticSearch();
+  } else {
+    console.log("Calling loadTweets");
+    loadTweets();
+  }
+}
+window.addEventListener('load', () => {
+  loadTweets();
+  input_query.addEventListener('input', handleSearch);
+});
