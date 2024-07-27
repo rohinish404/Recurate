@@ -10,9 +10,9 @@
 ## TODO
 
 - [x] add labelling script + a bit of preprocessing also
-- [ ] change scraping script to include only image scraping also + also make relevant changes to extension + add option for popup before saving + if
+- [x] change scraping script to include only image scraping also + also make relevant changes to extension + add option for popup before saving + if
 lot of tweets, somehow save in 500s
-- [ ] add image search using lancedb, name it memeSearch
+- [x] add image search using lancedb, name it memeSearch
 - [ ] categorise
 - [ ] add option for image search
 - [ ] create a sh for executing files in flow

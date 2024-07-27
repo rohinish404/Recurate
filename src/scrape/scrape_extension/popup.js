@@ -1,17 +1,18 @@
 
 const scraper = document.getElementById("scraper")
+const imgScraper = document.getElementById("imgScraper")
 
-
-async function executor() {
+async function executor(scrapeImagesOnly = false) {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
   await chrome.scripting.executeScript({
     target: { tabId: tab.id },
     function: injectScrollAndSave,
+    args: [scrapeImagesOnly]
   });
 }
 
 
-async function injectScrollAndSave() {
+async function injectScrollAndSave(scrapeImagesOnly) {
 
   function extractTweetData(tweet) {
     const usernameElement = tweet.querySelector('div[data-testid="User-Name"] span');
@@ -47,7 +48,9 @@ async function injectScrollAndSave() {
       tweets.forEach(tweet => {
         const tweetData = extractTweetData(tweet);
         if (tweetData.tweetLink && !uniqueTweets.has(tweetData.tweetLink)) {
-          uniqueTweets.set(tweetData.tweetLink, tweetData);
+          if (!scrapeImagesOnly || (scrapeImagesOnly && tweetData.media.length > 0)) {
+            uniqueTweets.set(tweetData.tweetLink, tweetData);
+          }
         }
       });
 
@@ -97,4 +100,5 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     URL.revokeObjectURL(url);
   }
 });
-scraper.addEventListener('click', executor)
+scraper.addEventListener('click', () => executor(false));
+imgScraper.addEventListener('click', () => executor(true));

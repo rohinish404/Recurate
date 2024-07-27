@@ -37,7 +37,7 @@ def get_resp(input):
 def labelTweets(data):
     df = pd.DataFrame(data)
     df['label'] = df['tweetContent'].apply(get_resp)
-    df.to_csv('bookmarks_with_label.csv', index=False)    
+    df.to_csv('src/data/bookmarks_with_label.csv', index=False)    
 
 if __name__ == "__main__":
     filename = sys.argv[-1]

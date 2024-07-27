@@ -1,16 +1,15 @@
 const all_tweets = document.getElementById("all_tweets")
 const input_query = document.getElementById("myInput")
-const search_btn = document.getElementById("search_btn")
 const toggleCheck = document.getElementById("toggleCheck")
-
 async function loadTweets(){
   try {
     const response = await fetch('../data/bookmarks.json');
     const tweet_data = await response.json();
     all_tweets.innerHTML = '';
     tweet_data.forEach((twt)=>{
-      const tweetElement = document.createElement('div');
-      tweetElement.id = "tweet"
+      const tweetElement = document.createElement('a');
+      tweetElement.setAttribute('src',twt?.tweetLink) 
+      tweetElement.className = "tweet"
       tweetElement.innerHTML = `
 <p>${twt?.username}</p>
 <p>${twt?.tweetContent}</p>

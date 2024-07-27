@@ -5,3 +5,4 @@ pandas
 tantivy
 groq
 python-dotenv
+open_clip_torch

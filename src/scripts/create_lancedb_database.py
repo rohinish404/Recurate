@@ -10,7 +10,7 @@ class EmbeddingModel(LanceModel):
     embeddings : Vector(model.ndims()) = model.VectorField()
     username: str
 
-embeds_df = pd.read_csv("../data/embeds/embeddings.csv")
+embeds_df = pd.read_csv("src/data/embeds/embeddings.csv")
 embeds_df['embeddings'] = embeds_df['embeddings'].apply(lambda x: np.fromstring(x.strip("[]"), sep=','))
 db = lancedb.connect("embeds/")
 table = db.create_table("Embeddings", data= embeds_df,schema=EmbeddingModel, mode="overwrite")

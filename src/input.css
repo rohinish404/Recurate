@@ -5,7 +5,7 @@
   padding: 20px;
 }
 
-#tweet {
+.tweet {
   background-color: #f8f9fa;
   border: 1px solid #e1e8ed;
   border-radius: 12px;
@@ -14,18 +14,18 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-#tweet p:first-child {
+.tweet p:first-child {
   font-weight: bold;
   color: #14171a;
   margin-bottom: 5px;
 }
 
-#tweet p:nth-child(2) {
+.tweet p:nth-child(2) {
   color: #657786;
   margin-bottom: 10px;
 }
 
-#tweet img {
+.tweet img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
