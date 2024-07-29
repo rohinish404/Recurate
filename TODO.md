@@ -14,7 +14,7 @@
 lot of tweets, somehow save in 500s
 - [x] add image search using lancedb, name it memeSearch
 - [ ] categorise
-- [ ] add option for image search
+- [x] add option for image search
 - [ ] create a sh for executing files in flow
 - [ ] revamp whole ui 
 - [ ] see if search over tweets can be improved

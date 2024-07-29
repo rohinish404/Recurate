@@ -17,7 +17,7 @@ app.add_middleware(
 db = lancedb.connect('embeds/')
 table = db.open_table("Embeddings")
 
-db_img = lancedb.connect('lancedb_imgs')
+db_img = lancedb.connect('imgs')
 table_img = db_img.open_table("imgs")
 
 class Ask(BaseModel):
@@ -34,6 +34,7 @@ async def get_twt_results(request: Ask):
 
 @app.post("/get_img_results")
 async def get_img_results(request: Ask):
-    rs = table_img.search(request.query).limit(3).to_pydantic(TwtImgs)
+    print(table_img.head())
+    rs = table_img.search(request.query).limit(10).to_pydantic(TwtImgs)
     return rs
 

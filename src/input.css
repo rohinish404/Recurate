@@ -1,10 +1,30 @@
-#all_tweets {
+#all_tweets{
   display: grid;
   grid-template-columns: repeat(3,minmax(300px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
+#all_imgs{
+  display: grid;
+  grid-template-columns: repeat(3,minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.tweet_imgs img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.tweet_imgs {
+  background-color: #f8f9fa;
+  border: 1px solid #e1e8ed;
+  border-radius: 12px;
+  padding: 15px;
+  overlow: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
 .tweet {
   background-color: #f8f9fa;
   border: 1px solid #e1e8ed;

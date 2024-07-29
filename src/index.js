@@ -33,7 +33,7 @@ async function loadTweets(){
 
 function semanticSearch() {
   all_tweets.innerHTML = '';
-  fetch('http://localhost:8000/ask',{
+  fetch('http://localhost:8000/get_twt_results',{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -53,7 +53,6 @@ function semanticSearch() {
         all_tweets.appendChild(tweetElement);
       });
     })
-    .catch(error => console.error('Error:', error));
 }
 
 function handleSearch() {
