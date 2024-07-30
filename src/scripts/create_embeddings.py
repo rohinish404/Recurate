@@ -5,7 +5,7 @@ import os
 
 model = SentenceTransformer("BAAI/bge-small-en-v1.5")
 
-with open('src/data/tweet_data.json', 'r') as f:
+with open('src/data/bookmarks.json', 'r') as f:
    data = json.load(f)
 
 def generate_embeddings(text):

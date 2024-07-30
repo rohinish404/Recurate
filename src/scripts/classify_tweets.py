@@ -37,7 +37,11 @@ def get_resp(input):
 def labelTweets(data):
     df = pd.DataFrame(data)
     df['label'] = df['tweetContent'].apply(get_resp)
-    df.to_csv('src/data/bookmarks_with_label.csv', index=False)    
+    result = df.to_dict('records')
+
+    with open('src/data/bookmarks_with_label.json', 'w') as f:
+        json.dump(result, f, indent=2)
+    print("labelling done...")
 
 if __name__ == "__main__":
     filename = sys.argv[-1]

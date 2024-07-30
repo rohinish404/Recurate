@@ -1,6 +1,7 @@
 const all_tweets = document.getElementById("all_tweets")
 const input_query = document.getElementById("myInput")
 const toggleCheck = document.getElementById("toggleCheck")
+const labelbtn = document.getElementsByClassName("label_btn")
 async function loadTweets(){
   try {
     const response = await fetch('../data/bookmarks.json');
@@ -64,7 +65,42 @@ function handleSearch() {
     loadTweets();
   }
 }
+
+function showLabelled(e) {
+  const targetValue = e.target.value
+  console.log(targetValue)
+  all_tweets.innerHTML = '';
+  fetch('http://localhost:8000/get_label_results',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query: e.target.value }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(twt => {
+        const tweetElement = document.createElement('a');
+        tweetElement.setAttribute('src',twt?.tweetLink) 
+        tweetElement.className = "tweet"
+        tweetElement.innerHTML = `
+<p>${twt?.username}</p>
+<p>${twt?.tweetContent}</p>
+<img src="${twt?.media[0]}"></img> 
+`;
+
+        all_tweets.appendChild(tweetElement);
+      });
+    })
+
+
+
+} 
+
 window.addEventListener('load', () => {
   loadTweets();
   input_query.addEventListener('input', handleSearch);
 });
+for (let i = 0; i<labelbtn.length; i++){
+  labelbtn[i].addEventListener('click', showLabelled)
+}
