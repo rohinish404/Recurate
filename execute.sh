@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "preprocessing..."
+python3 src/scripts/preprocessing.py
+
 echo "creating embeddings of tweets..."
 python3 src/scripts/create_embeddings.py
 
