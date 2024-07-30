@@ -45,7 +45,7 @@ function semanticSearch() {
     .then(data => {
       data.forEach(item => {
         const tweetElement = document.createElement('div');
-        tweetElement.id = "tweet"
+        tweetElement.className = "tweet"
         tweetElement.innerHTML = `
 <p>${item?.username}</p>
 <p>${item?.tweetContent}</p>
