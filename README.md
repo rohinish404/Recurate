@@ -45,7 +45,10 @@ serve
 
 https://github.com/user-attachments/assets/3afc7466-2253-4b31-870e-6a925f5b47fa
 
-## Further improvements (that can be made but i won't be working on it for sometime until i feel like :))
-
+## Further improvements (that can be made but i won't be working on it until i feel like :))
+- Both text/image search can be improved. For images something like - use a vlm to describe the image -> create embeddings of that description -> then create db. Maybe this can improve the search.
+- Current scraping script doesn't take into account longer tweets (which has learn more..). So add that to script.
+- Download images feature in memeSearch
+- Open actual tweets by clicking somewhere on displayed tweet.
 
 **Thanks for trying out. Do star⭐️ the repo if you found this useful**
