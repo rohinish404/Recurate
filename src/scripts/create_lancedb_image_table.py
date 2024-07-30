@@ -38,5 +38,5 @@ else:
     table.add(pd.DataFrame({"image_uri": uris,"image_links":extractedValues}))
     
 
-print("Table created")
+print("Image Table created")
 print(f"Tabel Info {table.to_pandas().info()}")

@@ -15,7 +15,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-db = lancedb.connect('embeds/')
+db = lancedb.connect('embeds')
 table = db.open_table("Embeddings")
 
 db_img = lancedb.connect('imgs')

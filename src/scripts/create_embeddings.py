@@ -20,4 +20,4 @@ df['embeddings'] = df['tweetContent'].apply(generate_embeddings)
 directory = "src/data/embeds"
 os.makedirs(directory, exist_ok=True)
 df.to_csv(os.path.join(directory,'embeddings.csv'), index=False)
-
+print("embeddings created...")

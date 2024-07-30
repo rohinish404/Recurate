@@ -26,3 +26,10 @@ lot of tweets, somehow save in 500s
 **Try to finish this by next week tuesday/wednesday**
 
 ## FLOW
+
+- Use chrome extension in src/scrape/scrape_extension to scrape the relevant page from X (twitter). Use both the text as well as image.
+
+- Add those json files to src/data/.
+- Run the execute.sh file which will create embeddings, store tweets as well as images in separate lancedb databases. download the images in src/data/downloaded_images/. create two new json files bookmarks_with_label.json and image_links.json.
+- Now, we have all the files needed for running the app. 
+- run the html as well as fastapi app and enjoy!
