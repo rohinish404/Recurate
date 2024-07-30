@@ -16,3 +16,5 @@ If tweets are too much or there is infinite scrolling a maxScroll of 100 is set.
 ![image](https://github.com/user-attachments/assets/1ffc6eb5-9096-48dc-b87a-ef63a7360c85)
 
 Now you can use the extension. Check out the demo video on main readme to see how to use.
+
+Actual idea for this type of scraping was shared by someone on X (twitter).
