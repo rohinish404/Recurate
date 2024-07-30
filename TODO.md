@@ -15,10 +15,10 @@ lot of tweets, somehow save in 500s
 - [x] add image search using lancedb, name it memeSearch
 - [x] categorise
 - [x] add option for image search
-- [ ] create a sh for executing files in flow
+- [x] create a sh for executing files in flow
 - [x] revamp whole ui 
 - [ ] see if search over tweets can be improved
-- [ ] create separate readmes
+- [x] create separate readmes
 - [x] think of a better way for saving/managing files 
 - [x] fking add print statements so to know what stage the file execution is at
 - [ ] load more in scraping
