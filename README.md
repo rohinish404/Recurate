@@ -37,8 +37,15 @@ cd src
 serve
 ```
 - Use the app 🎉
+  
+**Note - Name the files as mentioned above only otherwise the app won't recognise these data files.**
 
 ## Demo
+
+
+https://github.com/user-attachments/assets/3afc7466-2253-4b31-870e-6a925f5b47fa
+
+## Further improvements (that can be made but i won't be working on it for sometime until i feel like :))
 
 
 **Thanks for trying out. Do star⭐️ the repo if you found this useful**
